@@ -160,11 +160,11 @@ async def connect_database():
                 "bot_db": {
                     "engine": "tortoise.backends.mysql",
                     "credentials": {
-                        "host": "localhost",
+                        "host": "157.245.205.53",
                         "port": "3306",
-                        "user": "root",
-                        "password": "password",
-                        "database": "my_database",
+                        "user": "bot",
+                        "password": "aaaaaaac",
+                        "database": "bot",
                     }
                 }
             },
