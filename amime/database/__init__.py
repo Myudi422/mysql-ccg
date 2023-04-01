@@ -157,9 +157,16 @@ async def connect_database():
     await Tortoise.init(
         {
             "connections": {
-                "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://admin:aaaaaaac@143.198.94.7:5004/db"
-                )
+                "bot_db": {
+                    "engine": "tortoise.backends.mysql",
+                    "credentials": {
+                        "host": "localhost",
+                        "port": "3306",
+                        "user": "root",
+                        "password": "password",
+                        "database": "my_database",
+                    }
+                }
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
         }
