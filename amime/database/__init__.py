@@ -162,9 +162,9 @@ async def connect_database():
                     "credentials": {
                         "host": "157.245.205.53",
                         "port": "3306",
-                        "user": "bot",
+                        "user": "ccgnimex",
                         "password": "aaaaaaac",
-                        "database": "bot",
+                        "database": "ccgnimex",
                     }
                 }
             },
