@@ -27,7 +27,7 @@ from pyrogram.types import CallbackQuery, Chat, User
 from pyromod.helpers import bki, ikb
 
 from amime.amime import Amime
-from amime.database import users_web
+from amime.database import Notify
 
 
 async def get_notify_button(
@@ -35,7 +35,7 @@ async def get_notify_button(
 ) -> Tuple:
     recipient_type = "user" if isinstance(recipient, User) else "group"
 
-    notify = await users_web.get_or_none(
+    notify = await Noitfy.get_or_none(
         recipient=recipient.id,
         recipient_type=recipient_type,
         item=content_id,
@@ -72,7 +72,7 @@ async def notify_callback(bot: Amime, callback: CallbackQuery):
     elif content_type == "episodes":
         callback.continue_propagation()
 
-    notify = await users_web.get_or_none(
+    notify = await Notify.get_or_none(
         recipient=recipient_id,
         recipient_type=recipient_type,
         item=content_id,
@@ -80,7 +80,7 @@ async def notify_callback(bot: Amime, callback: CallbackQuery):
     )
 
     if notify is None:
-        await users_web.create(
+        await Notify.create(
             recipient=recipient_id,
             recipient_type=recipient_type,
             item=content_id,
