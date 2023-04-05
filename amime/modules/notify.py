@@ -35,7 +35,7 @@ async def get_notify_button(
 ) -> Tuple:
     recipient_type = "user" if isinstance(recipient, User) else "group"
 
-    notify = await Noitfy.get_or_none(
+    notify = await Notify.get_or_none(
         recipient=recipient.id,
         recipient_type=recipient_type,
         item=content_id,
