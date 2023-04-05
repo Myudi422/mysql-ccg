@@ -92,7 +92,7 @@ class Notifications(Model):
 
 
 class Notify(Model):
-    id = fields.IntField(pk=True)
+    id_web = fields.IntField(pk=True)
     recipient = fields.IntField()
     recipient_type = fields.CharField(max_length=5)
     item = fields.IntField()
@@ -100,7 +100,6 @@ class Notify(Model):
     language = fields.CharField(max_length=6, default="en")
     first_name = fields.CharField(max_length=255, default=None)
     last_name = fields.CharField(max_length=255, default=None)
-    telegram_id = fields.IntField(default=None)
     telegram_username = fields.CharField(max_length=255, default=None)
     profile_picture = fields.CharField(max_length=255, default=None)
     auth_date = fields.DatetimeField(default=None)
