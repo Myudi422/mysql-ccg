@@ -98,6 +98,15 @@ class Notify(Model):
     item = fields.IntField()
     type = fields.CharField(max_length=7)
     language = fields.CharField(max_length=6, default="en")
+    first_name = fields.CharField(max_length=255, default=None)
+    last_name = fields.CharField(max_length=255, default=None)
+    telegram_id = fields.IntField(default=None)
+    telegram_username = fields.CharField(max_length=255, default=None)
+    profile_picture = fields.CharField(max_length=255, default=None)
+    auth_date = fields.DatetimeField(default=None)
+    added = fields.DatetimeField(default=None)
+    updated = fields.DatetimeField(default=None)
+    last_seen = fields.DatetimeField(default=None)
 
 
 class nHentai(Model):
