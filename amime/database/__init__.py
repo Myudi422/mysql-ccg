@@ -91,7 +91,7 @@ class Notifications(Model):
     datetime = fields.DatetimeField()
 
 
-class Notify(Model):
+class users_web(Model):
     id_web = fields.IntField(pk=True)
     recipient = fields.IntField()
     recipient_type = fields.CharField(max_length=5)
