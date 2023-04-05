@@ -28,7 +28,7 @@ from pyromod.helpers import ikb
 
 from amime.amime import Amime
 from amime.config import CHANNELS
-from amime.database import Chats, Notifications, Notify, Users
+from amime.database import Chats, Notifications, users_web, Users
 from amime.modules.anime.manage import anime_manage
 
 
@@ -187,7 +187,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
     except (ChannelInvalid, ChatWriteForbidden):
         pass
 
-    chats = await Notify.filter(item=anime_id, type="anime")
+    chats = await users_web.filter(item=anime_id, type="anime")
     for chat in chats:
         l = None
         keyboard = None
