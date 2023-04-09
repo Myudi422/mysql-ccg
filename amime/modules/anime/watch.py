@@ -171,17 +171,16 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             )
 
 
-async def get_watched_button(lang, user: User, episode_id: int, anime: int,) -> Tuple:
+async def get_watched_button(lang, user: User, episode_id: int) -> Tuple:
     watched = await Watched.get_or_none(
         user=user.id,
         episode=episode_id,
-        anime=anime_id
     )
     if watched is None:
         text = lang.mark_as_watched_button
     else:
         text = lang.mark_as_unwatched_button
-    return (text, f"watched {episode_id} {anime_id}")
+    return (text, f"watched {episode_id}")
 
 
 @Amime.on_callback_query(filters.regex(r"^watched (?P<id>\d+)"))

@@ -148,7 +148,6 @@ class Watched(Model):
     id = fields.IntField(pk=True)
     user = fields.IntField()
     episode = fields.IntField()
-    anime = fields.IntField()
 
 #"postgres://admin:cinangka3@containers-us-west-57.railway.app:5851/anime"
 #postgres://admin:cinangka3@188.166.241.229:3291/ccgnimex
