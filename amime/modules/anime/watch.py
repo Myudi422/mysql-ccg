@@ -171,7 +171,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             )
 
 
-async def get_watched_button(lang, user: User, episode_id: int, anime=anime_id) -> Tuple:
+async def get_watched_button(lang, user: User, episode_id: int, anime: int,) -> Tuple:
     watched = await Watched.get_or_none(
         user=user.id,
         episode=episode_id,
