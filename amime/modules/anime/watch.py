@@ -209,6 +209,7 @@ async def watched_callback(bot: Amime, callback: CallbackQuery):
                     lang,
                     user,
                     episode_id,
+                    anime_id,
                 )
 
     await callback.edit_message_reply_markup(ikb(keyboard))
