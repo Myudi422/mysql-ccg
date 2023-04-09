@@ -181,21 +181,19 @@ async def get_watched_button(lang, user: User, episode_id: int) -> Tuple:
         text = lang.mark_as_watched_button
     else:
         text = lang.mark_as_unwatched_button
-    return (text, f"watched {episode_id} {anime}")
+    return (text, f"watched {episode_id} {anime_id}")
 
 
-@Amime.on_callback_query(filters.regex(r"^watched (?P<episode_id>\d+) (?P<anime_id>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^watched (?P<id>\d+)"))
 async def watched_callback(bot: Amime, callback: CallbackQuery):
-    anime_id = int(callback.matches[0]["anime_id"])
     episode_id = int(callback.matches[0]["id"])
     message = callback.message
     user = callback.from_user
     lang = callback._lang
 
     watched = await Watched.get_or_none(
-    user=user.id,
-    episode=episode_id,
-    anime_id=anime_id,
+        user=user.id,
+        episode=episode_id,
     )
 
     if watched is None:
@@ -209,11 +207,10 @@ async def watched_callback(bot: Amime, callback: CallbackQuery):
         for index, button in enumerate(column):
             if button[1].startswith("watched"):
                 keyboard[line][index] = await get_watched_button(
-    lang,
-    user,
-    episode_id,
-    anime_id,
-)
+                    lang,
+                    user,
+                    episode_id,
+                )
 
     await callback.edit_message_reply_markup(ikb(keyboard))
 
